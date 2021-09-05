@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './image.png';
+import './Index.css';
 
 function Index({poster,title,overview,date,id,movies}){
 
