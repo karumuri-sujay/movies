@@ -1,7 +1,17 @@
 import axios from 'axios';
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { Redirect } from 'react-router';
 
 class Regiser extends React.Component{
+    constructor(props){
+        super(props);
+        window.onload=function(){
+            alert("refresh");
+        }
+        this.state={
+            redirect:false
+        }
+    }
     handleSubmit=(event)=>{
         event.preventDefault();
         const data={
@@ -12,13 +22,19 @@ class Regiser extends React.Component{
         }
         console.log(data);
 
-        axios.post('http://localhost:3000',data).then(
+        axios.post('http://localhost:3000/login',data).then(
             res=>{
                 console.log(res);
+                this.setState({
+                    redirect:true
+                });
             }
         ).catch(
             err=>{
                 console.log(err);
+                this.setState({
+                    redirect:false
+                });
             }
         )
     }
